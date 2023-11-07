@@ -1,28 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Exploration Over the Years</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            /* Prevent scrolling */
+        }
 
-  <title>Space Exploration</title>
+        /* Shooting Stars Animation */
+        #shooting-stars {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            animation: shooting 5s linear infinite;
+            /* Make stars move from left to right */
+        }
+
+        @keyframes shooting {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(100vw);
+                opacity: 1;
+            }
+        }
+
+        #header {
+            text-align: center;
+            padding: 100px;
+            animation: fadeIn 2s ease-in;
+        }
+
+        #main-content {
+            text-align: center;
+            padding: 50px;
+        }
+
+        #timeline {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            animation: slideIn 2s ease-in-out;
+        }
+
+        .event {
+            flex: 1;
+            padding: 20px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            background-color: #333;
+            animation: fadeIn 2s ease-in;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+
+        .event:hover {
+            background-color: #555;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        #info-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #info-content {
+            background-color: #333;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        #close-button {
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Footer Styling */
+        #footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+        }
+
+        #footer p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        body {
+            overflow: scroll;
+            /* Show scrollbars */
+        }
+
+        #viz1699354375710 {
+            margin: 2% 30%;
+        }
+
+        #viz1699354296628 {
+            margin: 2% 4%;
+        }
+    </style>
 </head>
+
 <body>
+    <div id="shooting-stars">
+        <div class="star" style="top: 10%; left: 10%; width: 5px; height: 5px;"></div>
+        <div class="star" style="top: 20%; left: 80%; width: 5px; height: 5px;"></div>
+        <div class="star" style="top: 30%; left: 50%; width: 5px; height: 5px;"></div>
+        <div class="star" style="top: 40%; left: 20%; width: 5px; height: 5px;"></div>
+        <div class="star" style="top: 50%; left: 70%; width: 5px; height: 5px;"></div>
+        <div class="star" style="top: 60%; left: 40%; width: 5px; height: 5px;"></div>
+        <!-- Add more stars as needed -->
+    </div>
 
-  <div class='tableauPlaceholder' id='viz1699354319708' style='position: relative'><noscript><a href='#'><img alt='SpaceRace ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;SpaceRace_16029283688270&#47;SpaceRace&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='SpaceRace_16029283688270&#47;SpaceRace' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;SpaceRace_16029283688270&#47;SpaceRace&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1699354319708');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1400px';vizElement.style.height='2027px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1400px';vizElement.style.height='2027px';} else { vizElement.style.width='100%';vizElement.style.height='3777px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
- 
-  <div class='tableauPlaceholder' id='viz1699354357623' style='position: relative'><noscript><a href='#'><img alt='50yrs China&#39;s Space Journey ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;50&#47;50YearsofChinasSpaceJourney&#47;50yrsChinasSpaceJourney&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='50YearsofChinasSpaceJourney&#47;50yrsChinasSpaceJourney' /><param name='tabs' value='no' /><param name='toolbar' value='no' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;50&#47;50YearsofChinasSpaceJourney&#47;50yrsChinasSpaceJourney&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1699354357623');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1360px';vizElement.style.height='900px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
 
-  <div class='tableauPlaceholder' id='viz1699354375710' style='position: relative'><noscript><a href='https:&#47;&#47;www.infodata.ilsole24ore.com&#47;2019&#47;07&#47;20&#47;dalla-luna-a-marte-storia-moderna-delle-esplorazioni-spaziali&#47;?'><img alt='Missions Schema ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;TotheMoonMars-Historyofspaceexploration&#47;MissionsSchema&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TotheMoonMars-Historyofspaceexploration&#47;MissionsSchema' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;TotheMoonMars-Historyofspaceexploration&#47;MissionsSchema&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1699354375710');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='650px';vizElement.style.height='1127px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='650px';vizElement.style.height='1127px';} else { vizElement.style.width='100%';vizElement.style.height='1127px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    <div id="header">
+        <h1>Space Exploration Over the Years</h1>
+        <p>Discover the incredible journey of humanity's exploration of the cosmos.</p>
+    </div>
 
-<div class='tableauPlaceholder' id='viz1699354384295' style='position: relative'><noscript><a href='#'><img alt='Human Space Flight Metrics ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Hu&#47;HumanSpaceFlight-1961-2021&#47;HumanSpaceFlightMetrics&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='HumanSpaceFlight-1961-2021&#47;HumanSpaceFlightMetrics' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Hu&#47;HumanSpaceFlight-1961-2021&#47;HumanSpaceFlightMetrics&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1699354384295');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1400px';vizElement.style.height='2027px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-<div class='tableauPlaceholder' id='viz1699354399004' style='position: relative'><noscript><a href='#'><img alt='Space Race ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Th&#47;TheSpaceRace_15987994023440&#47;SpaceRace&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TheSpaceRace_15987994023440&#47;SpaceRace' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Th&#47;TheSpaceRace_15987994023440&#47;SpaceRace&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1699354399004');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1400px';vizElement.style.height='1027px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-<div class='tableauPlaceholder' id='viz1699354784063' style='position: relative'><noscript><a href='#'><img alt='Space Walks ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;In&#47;InternationalSpaceStationSpaceWalks-MakeovermondayWeek182019&#47;SpaceWalks&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='InternationalSpaceStationSpaceWalks-MakeovermondayWeek182019&#47;SpaceWalks' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;In&#47;InternationalSpaceStationSpaceWalks-MakeovermondayWeek182019&#47;SpaceWalks&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1699354784063');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1600px';vizElement.style.height='1727px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1600px';vizElement.style.height='1727px';} else { vizElement.style.width='100%';vizElement.style.height='5527px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    <div id="main-content">
+        <div id="timeline">
+            <div class="event">
+                <h2>1957</h2>
+                <p>Launch of Sputnik 1, the first artificial Earth satellite. This marked the beginning of the space
+                    age.</p>
+            </div>
+            <div class="event">
+                <h2>1961</h2>
+                <p>Yuri Gagarin becomes the first human to travel into space, orbiting Earth aboard Vostok 1.</p>
+            </div>
+            <div class="event">
+                <h2>1969</h2>
+                <p>Apollo 11 mission successfully lands astronauts Neil Armstrong and Buzz Aldrin on the Moon.</p>
+            </div>
+            <div class="event">
+                <h2>1977</h2>
+                <p>Voyager 1 and 2 are launched to explore the outer solar system, providing valuable data about
+                    distant planets.</p>
+            </div>
+            <div class="event">
+                <h2>1986</h2>
+                <p>Space Shuttle Challenger disaster, a tragic event that resulted in the loss of seven astronauts.</p>
+            </div>
+            <div class="event">
+                <h2>1990</h2>
+                <p>Launch of the Hubble Space Telescope, which has provided stunning images of distant galaxies and
+                    celestial objects.</p>
+            </div>
+            <div class="event">
+                <h2>2004</h2>
+                <p>Opportunity rover lands on Mars, beginning its mission to study the planet's surface and geology.</p>
+            </div>
+            <div class="event">
+                <h2>2012</h2>
+                <p>Curiosity rover lands on Mars, conducting extensive research on the planet's climate and geology.</p>
+            </div>
+            <div class="event">
+                <h2>2015</h2>
+                <p>New Horizons spacecraft flies by Pluto, capturing detailed images and data about the dwarf planet.
+                </p>
+            </div>
+            <div class="event">
+                <h2>2020</h2>
+                <p>Perseverance rover lands on Mars, aiming to search for signs of past microbial life and collect
+                    samples.</p>
+            </div>
+            <div class="event">
+                <h2>2021</h2>
+                <p>James Webb Space Telescope is launched, expected to revolutionize our understanding of the universe's
+                    earliest moments.</p>
+            </div>
+            <!-- Add more event boxes for other years -->
+        </div>
+        <div class='tableauPlaceholder' id='viz1699354357623' style='position: relative'><noscript><a href='#'><img
+                        alt='50yrs China&#39;s Space Journey '
+                        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;50&#47;50YearsofChinasSpaceJourney&#47;50yrsChinasSpaceJourney&#47;1_rss.png'
+                        style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value='' />
+                <param name='name' value='50YearsofChinasSpaceJourney&#47;50yrsChinasSpaceJourney' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='no' />
+                <param name='static_image'
+                    value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;50&#47;50YearsofChinasSpaceJourney&#47;50yrsChinasSpaceJourney&#47;1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' /></object></div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1699354357623');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = '1360px';
+            vizElement.style.height = '900px';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+        <div class='tableauPlaceholder' id='viz1699354319708' style='position: relative'><noscript><a href='#'><img
+                        alt='SpaceRace '
+                        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;SpaceRace_16029283688270&#47;SpaceRace&#47;1_rss.png'
+                        style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value='' />
+                <param name='name' value='SpaceRace_16029283688270&#47;SpaceRace' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image'
+                    value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sp&#47;SpaceRace_16029283688270&#47;SpaceRace&#47;1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' /></object></div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1699354319708');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            if (divElement.offsetWidth > 800) {
+                vizElement.style.width = '1400px';
+                vizElement.style.height = '2027px';
+            } else if (divElement.offsetWidth > 500) {
+                vizElement.style.width = '1400px';
+                vizElement.style.height = '2027px';
+            } else {
+                vizElement.style.width = '100%';
+                vizElement.style.height = '3777px';
+            }
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
 
-  <div class='tableauPlaceholder' id='viz1699354799050' style='position: relative'><noscript><a href='#'><img alt='Exoplanets ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ex&#47;Exoplanets_15992494208880&#47;Exoplanets&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Exoplanets_15992494208880&#47;Exoplanets' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ex&#47;Exoplanets_15992494208880&#47;Exoplanets&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1699354799050');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1600px';vizElement.style.height='827px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-  
-  <div class='tableauPlaceholder' id='viz1699354296628' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;2C&#47;2CQ3ZKTJQ&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;2CQ3ZKTJQ' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;2C&#47;2CQ3ZKTJQ&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1699354296628');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='1311px';vizElement.style.height='1752px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-  
-  
+        <div class='tableauPlaceholder' id='viz1699354375710' style='position: relative'><noscript><a
+                    href='https:&#47;&#47;www.infodata.ilsole24ore.com&#47;2019&#47;07&#47;20&#47;dalla-luna-a-marte-storia-moderna-delle-esplorazioni-spaziali&#47;?'><img
+                        alt='Missions Schema '
+                        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;TotheMoonMars-Historyofspaceexploration&#47;MissionsSchema&#47;1_rss.png'
+                        style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value='' />
+                <param name='name' value='TotheMoonMars-Historyofspaceexploration&#47;MissionsSchema' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image'
+                    value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;TotheMoonMars-Historyofspaceexploration&#47;MissionsSchema&#47;1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' /></object></div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1699354375710');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            if (divElement.offsetWidth > 800) {
+                vizElement.style.width = '650px';
+                vizElement.style.height = '1127px';
+            } else if (divElement.offsetWidth > 500) {
+                vizElement.style.width = '650px';
+                vizElement.style.height = '1127px';
+            } else {
+                vizElement.style.width = '100%';
+                vizElement.style.height = '1127px';
+            }
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
 
+        <div class='tableauPlaceholder' id='viz1699354384295' style='position: relative'><noscript><a href='#'><img
+                        alt='Human Space Flight Metrics '
+                        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Hu&#47;HumanSpaceFlight-1961-2021&#47;HumanSpaceFlightMetrics&#47;1_rss.png'
+                        style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value='' />
+                <param name='name' value='HumanSpaceFlight-1961-2021&#47;HumanSpaceFlightMetrics' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image'
+                    value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Hu&#47;HumanSpaceFlight-1961-2021&#47;HumanSpaceFlightMetrics&#47;1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' /></object></div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1699354384295');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = '1400px';
+            vizElement.style.height = '2027px';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+        <div class='tableauPlaceholder' id='viz1699354399004' style='position: relative'><noscript><a href='#'><img
+                        alt='Space Race '
+                        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Th&#47;TheSpaceRace_15987994023440&#47;SpaceRace&#47;1_rss.png'
+                        style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value='' />
+                <param name='name' value='TheSpaceRace_15987994023440&#47;SpaceRace' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image'
+                    value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Th&#47;TheSpaceRace_15987994023440&#47;SpaceRace&#47;1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' /></object></div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1699354399004');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = '1400px';
+            vizElement.style.height = '1027px';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+        <div class='tableauPlaceholder' id='viz1699354784063' style='position: relative'><noscript><a href='#'><img
+                        alt='Space Walks '
+                        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;In&#47;InternationalSpaceStationSpaceWalks-MakeovermondayWeek182019&#47;SpaceWalks&#47;1_rss.png'
+                        style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value='' />
+                <param name='name'
+                    value='InternationalSpaceStationSpaceWalks-MakeovermondayWeek182019&#47;SpaceWalks' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image'
+                    value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;In&#47;InternationalSpaceStationSpaceWalks-MakeovermondayWeek182019&#47;SpaceWalks&#47;1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' /></object></div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1699354784063');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            if (divElement.offsetWidth > 800) {
+                vizElement.style.width = '1600px';
+                vizElement.style.height = '1727px';
+            } else if (divElement.offsetWidth > 500) {
+                vizElement.style.width = '1600px';
+                vizElement.style.height = '1727px';
+            } else {
+                vizElement.style.width = '100%';
+                vizElement.style.height = '5527px';
+            }
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+
+        <div class='tableauPlaceholder' id='viz1699354799050' style='position: relative'><noscript><a href='#'><img
+                        alt='Exoplanets '
+                        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ex&#47;Exoplanets_15992494208880&#47;Exoplanets&#47;1_rss.png'
+                        style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='site_root' value='' />
+                <param name='name' value='Exoplanets_15992494208880&#47;Exoplanets' />
+                <param name='tabs' value='no' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image'
+                    value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ex&#47;Exoplanets_15992494208880&#47;Exoplanets&#47;1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' /></object></div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1699354799050');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = '1600px';
+            vizElement.style.height = '827px';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+
+        <div class='tableauPlaceholder' id='viz1699354296628' style='position: relative'><noscript><a href='#'><img
+                        alt='Dashboard 1 '
+                        src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;2C&#47;2CQ3ZKTJQ&#47;1_rss.png'
+                        style='border: none' /></a></noscript><object class='tableauViz' style='display:none;'>
+                <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+                <param name='embed_code_version' value='3' />
+                <param name='path' value='shared&#47;2CQ3ZKTJQ' />
+                <param name='toolbar' value='yes' />
+                <param name='static_image'
+                    value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;2C&#47;2CQ3ZKTJQ&#47;1.png' />
+                <param name='animate_transition' value='yes' />
+                <param name='display_static_image' value='yes' />
+                <param name='display_spinner' value='yes' />
+                <param name='display_overlay' value='yes' />
+                <param name='display_count' value='yes' />
+                <param name='language' value='en-US' /></object></div>
+        <script type='text/javascript'>
+            var divElement = document.getElementById('viz1699354296628');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            vizElement.style.width = '1311px';
+            vizElement.style.height = '1752px';
+            var scriptElement = document.createElement('script');
+            scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(scriptElement, vizElement);
+        </script>
+    </div>
+
+    <div id="info-modal">
+        <div id="info-content">
+            <span id="close-button" onclick="closeInfoModal()">&times;</span>
+            <div id="event-info">
+                <h2 id="event-year"></h2>
+                <p id="event-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>&copy; 2023 Space Exploration Website | Designed by Your Name</p>
+    </div>
+
+    <script>
+        const eventBoxes = document.querySelectorAll(".event");
+        const infoModal = document.getElementById("info-modal");
+        const eventYear = document.getElementById("event-year");
+        const eventDescription = document.getElementById("event-description");
+
+        eventBoxes.forEach((box) => {
+            box.addEventListener("click", () => {
+                const year = box.querySelector("h2").textContent;
+                let description;
+
+                // Provide different information for each year
+                switch (year) {
+                    case "1957":
+                        description =
+                            "Launch of Sputnik 1, the first artificial Earth satellite. This marked the beginning of the space age.";
+                        break;
+                    case "1961":
+                        description =
+                            "Yuri Gagarin becomes the first human to travel into space, orbiting Earth aboard Vostok 1.";
+                        break;
+                    case "1969":
+                        description =
+                            "Apollo 11 mission successfully lands astronauts Neil Armstrong and Buzz Aldrin on the Moon.";
+                        break;
+                    case "1977":
+                        description =
+                            "Voyager 1 and 2 are launched to explore the outer solar system, providing valuable data about distant planets.";
+                        break;
+                    case "1986":
+                        description =
+                            "Space Shuttle Challenger disaster, a tragic event that resulted in the loss of seven astronauts.";
+                        break;
+                    case "1990":
+                        description =
+                            "Launch of the Hubble Space Telescope, which has provided stunning images of distant galaxies and celestial objects.";
+                        break;
+                    case "2004":
+                        description =
+                            "Opportunity rover lands on Mars, beginning its mission to study the planet's surface and geology.";
+                        break;
+                    case "2012":
+                        description =
+                            "Curiosity rover lands on Mars, conducting extensive research on the planet's climate and geology.";
+                        break;
+                    case "2015":
+                        description =
+                            "New Horizons spacecraft flies by Pluto, capturing detailed images and data about the dwarf planet.";
+                        break;
+                    case "2020":
+                        description =
+                            "Perseverance rover lands on Mars, aiming to search for signs of past microbial life and collect samples.";
+                        break;
+                    case "2021":
+                        description =
+                            "James Webb Space Telescope is launched, expected to revolutionize our understanding of the universe's earliest moments.";
+                        break;
+                    default:
+                        description = "Information not available.";
+                }
+
+                eventYear.textContent = year;
+                eventDescription.textContent = description;
+                infoModal.style.display = "flex";
+            });
+        });
+
+        function closeInfoModal() {
+            infoModal.style.display = "none";
+        }
+        // JavaScript code for event box click and modal handling (as provided in previous responses)
+    </script>
 </body>
+
 </html>
